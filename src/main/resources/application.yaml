@@ -1,0 +1,8 @@
+dataSource:
+  hikari:
+    driverClassName: "org.postgresql.Driver"
+#    jdbcUrl: "jdbc:postgresql://localhost:5432/sakujj_db"
+    jdbcUrl: "jdbc:postgresql://postgres:5432/sakujj_db"
+    username: "postgres"
+    password: "postgres"
+    maximumPoolSize: 5
