@@ -1,0 +1,27 @@
+services:
+  app:
+    container_name: servlets-task-sakujj
+    build:
+      dockerfile: ./Dockerfile
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8080:8080"
+    networks:
+      - webnet
+
+  postgres:
+    container_name: postgres-task-servlets-sakujj
+    build:
+      dockerfile: Dockerfile-db
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready", "-d", "sakujj_db" ]
+      interval: 1s
+      timeout: 10s
+      retries: 20
+    networks:
+      - webnet
+
+networks:
+  webnet:
